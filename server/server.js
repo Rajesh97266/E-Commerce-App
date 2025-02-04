@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const authRouter = require("./routes/auth/auth-routes");
+require("dotenv").config();
+const adminProductsRouter = require("./routes/admin/products-routes");
 //create a database connection
 mongoose
-  .connect(
-    "mongodb+srv://rajesh97266:YukyjiksPzXjp6Qf@cluster0.cfnjl.mongodb.net/"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Connected to database!");
   })
@@ -37,6 +37,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
+app.use("/api/admin/products", adminProductsRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
