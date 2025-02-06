@@ -70,7 +70,7 @@ function HeaderRightContent() {
 }
 
 function ShoppingHeader() {
-  const { isAuthenticated} = useSelector((state) => state.auth);
+  
  
   
   return (
@@ -89,13 +89,15 @@ function ShoppingHeader() {
           </SheetTrigger>
           <SheetContent side="left" className="w-full max-w-xs">
             <MenuItems />
+            <HeaderRightContent />
           </SheetContent>
           <div className="hidden lg:block">
             <MenuItems />
+            
           </div>
-          {isAuthenticated ? <div>
+          <div className="hidden lg:block">
             <HeaderRightContent />
-          </div> : null}
+          </div>
         </Sheet>
         
       </div>
