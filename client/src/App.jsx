@@ -32,7 +32,7 @@ function App() {
   }, [dispatch])
 
   if (isLoading) {
-    return <Skeleton className="w-[800px] h-[600px] m-auto bg-black" />;
+    return <Skeleton className=" flex items-center justify-center w-[600px] h-[600px] m-auto bg-black" />;
   }
 
 

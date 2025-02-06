@@ -9,10 +9,11 @@ const adminProductsRouter = require("./routes/admin/products-routes");
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("Connected to database!");
+    console.log("✅ MongoDB Connected");
   })
   .catch((error) => {
-    console.log("Connection failed!" + error);
+    console.log("❌ MongoDB Connection Error" + error);
+    process.exit(1);
   });
 
 const app = express();
@@ -36,6 +37,8 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 
+
+//Use Routes
 app.use("/api/auth", authRouter);
 app.use("/api/admin/products", adminProductsRouter);
 

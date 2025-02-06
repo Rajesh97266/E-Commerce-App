@@ -20,6 +20,7 @@ export const registerUser = createAsyncThunk(
     );
 
     return response.data;
+    
   }
 );
 
@@ -75,7 +76,8 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action) => {},
+    setUser: (state, action) => {
+    },
   },
   extraReducers: (builder) => {
     builder
