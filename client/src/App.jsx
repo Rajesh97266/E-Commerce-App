@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import AuthLayout from "./components/auth/layout";
 import AuthLogin from "./pages/auth/login";
 import AuthRegister from "./pages/auth/register";
@@ -20,21 +20,23 @@ import { useEffect } from "react";
 import { checkAuth } from "./store/auth-slice";
 import { Skeleton } from "@/components/ui/skeleton";
 
-
 // import AuthRegister from "./pages/auth/register";
 
 function App() {
-  const { isAuthenticated, user , isLoading } = useSelector((state) => state.auth);
-  const dispatch = useDispatch()
+  const { isAuthenticated, user, isLoading } = useSelector(
+    (state) => state.auth
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(checkAuth())
-  }, [dispatch])
+    dispatch(checkAuth());
+  }, [dispatch]);
 
   if (isLoading) {
-    return <Skeleton className=" flex items-center justify-center w-[600px] h-[600px] m-auto bg-black" />;
+    return (
+      <Skeleton className=" flex items-center justify-center w-[600px] h-[600px] m-auto bg-black" />
+    );
   }
-
 
   return (
     <>
@@ -78,6 +80,7 @@ function App() {
             <Route path="checkout" element={<ShoppingCheckout />} />
             <Route path="account" element={<ShoppingAccount />} />
           </Route>
+          <Route path="/" element={<Navigate to="/auth/register" />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/unauth-page" element={<UnauthPage />} />
         </Routes>
