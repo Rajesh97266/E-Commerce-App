@@ -21,6 +21,8 @@ const AuthRegister = () => {
   function onSubmit(event) {
     event.preventDefault();
     dispatch(registerUser(formData)).then((data) => {
+      
+      
       if (data?.payload?.success) {
         toast({
           title: data.payload.message,
@@ -28,6 +30,11 @@ const AuthRegister = () => {
           variant: "success",
         });
         navigate("/auth/login");
+      } else {
+        toast({
+          title: data.payload.message,
+          variant: "destructive",
+        });
       }
     });
   }
