@@ -5,6 +5,8 @@ const cors = require("cors");
 const authRouter = require("./routes/auth/auth-routes");
 require("dotenv").config();
 const adminProductsRouter = require("./routes/admin/products-routes");
+
+
 //create a database connection
 mongoose
   .connect(process.env.MONGO_URI)
